@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Storage</title>
+</head>
+<body>
+    <input type="text" placeholder="localstorage" id="local1">
+    <input type="text" placeholder="sessionstorage" id="session1">
+    <input type="button" value="set" id="button1">
+    <input type="button" value="get" id="button2">
+    <hr />
+    <div id="div1"></div>
+
+    <script>
+        var btnSet = document.querySelector('#button1'),
+           btnGet = document.querySelector('#button2'),
+           myDiv = document.querySelector('#div1'),
+           txt1 = document.querySelector('#local1'),
+           txt2 = document.querySelector('#session1');
+
+           btnSet.addEventListener('click',function(){
+               localStorage.setItem("local",txt1.value);
+               sessionStorage.setItem("session",txt2.value);
+           })
+
+           
+           btnGet.addEventListener('click',function(){
+              var local1 =  localStorage.getItem("local");
+              var session1 =  sessionStorage.getItem("session");
+              myDiv.innerHTML = "local:" + local1 + "<br>session:" + session1;
+           })
+    </script>
+</body>
+</html>

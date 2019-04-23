@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #zone1{
+            width: 400px;
+            border: 1px solid #000;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <input type="file" id="file1">
+    <hr>
+    <div id="zone1">
+
+    </div>
+    <script>
+        document.querySelector("#file1").addEventListener("change",function(){
+            fileInfo(this.file[0])
+        })
+        function fileInfo(theFile){
+            console.log(theFile.name); //檔案名稱
+            console.log(theFile.type); //檔案類型
+             console.log(theFile.size); //檔案大小
+            console.log(theFile.lastModifiedDate); //最後校正日期
+        }
+        
+        var dropZone = document.querySelector("#zone1")
+        dropZone.addEventListener('dragover',function(evt){
+            evt.preventDefault()
+        })
+        dropZone.addEventListener('drop',function(evt){
+            evt.preventDefault()
+            evt.stopPropagation()
+            fileInfo(evt.dataTransfer.files[0])
+
+        })
+    </script>
+</body>
+</html>
